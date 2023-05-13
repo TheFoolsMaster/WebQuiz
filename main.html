@@ -1,34 +1,255 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz Game Page</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="home.css">
+    
+    <title>Quiz AFiBV</title>
+    <link rel="stylesheet" href="stylebetter.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
-    <script src="main.js"></script>
-    <div class="question-container">
-        <h2 id="question">Q1</h2>
-        <div class="choice-container">
-            <p class="choice-letter">A</p>
-            <p class="choice-text">choice 1</p>
-        </div>
-        <div class="choice-container">
-            <p class="choice-letter">B</p>
-            <p class="choice-text">choice 2</p>
-        </div>
-        <div class="choice-container">
-            <p class="choice-letter">C</p>
-            <p class="choice-text">choice 3</p>
-        </div>
-        <div class="choice-container">
-            <p class="choice-letter">D</p>
-            <p class="choice-text">choice 4</p>
-        </div>
+  <header>
+    <img src="VistulaLogo.png"  alt="Logo AFiBV"></a>
+  </header>
+
+   <!-- start Quiz button -->
+  <div class="start_btn"><button>Start Quiz</button></div>
+
+  <!-- quiz and instuction to refactor -->
+  <div id="quiz-container">
+    <h1>Quiz AFiBV</h1>
+    <div id="instructions">
+      <p>Tutaj znajduje się instrukcja dotycząca quizu.</p>
+      <p>Opis funkcji, działania i przebieg quizu.</p>
+    </div>
+
+    <div id="question-container">
+      <h2>Pytanie 1:</h2>
+      <p>Treść pytania</p>
+      <input type="radio" name="answer" value="A"> Odpowiedź A<br>
+      <input type="radio" name="answer" value="B"> Odpowiedź B<br>
+      <input type="radio" name="answer" value="C"> Odpowiedź C<br>
+      <input type="radio" name="answer" value="D"> Odpowiedź D<br>
+      <button onclick="nextQuestion()">Dalej</button>
+      <button onclick="previousQuestion()">Wstecz</button>
     </div>
     
+    <div id="result-container" style="display: none;">
+      <h2>Wynik:</h2>
+      <p id="result"></p>
+      <div id="answers-container"></div>
+      <button onclick="showAnswers()">Pokaż prawidłowe odpowiedzi</button>
+      <button onclick="retryQuiz()">Rozpocznij ponownie</button>
+      <button onclick="downloadCertificate()">Pobierz certyfikat</button>
+    </div>
+  </div>
+
+  <script>
+    var questions = [
+      {
+        question: "Treść pytania 1",
+        answers: ["Odpowiedź A", "Odpowiedź B", "Odpowiedź C", "Odpowiedź D"],
+        correctAnswer: 0
+      },
+      {
+        question: "Treść pytania 2",
+        answers: ["Odpowiedź A", "Odpowiedź B", "Odpowiedź C", "Odpowiedź D"],
+        correctAnswer: 1
+      },
+      // Add rest questions
+    ];
+
+    var currentQuestion = 0;
+    var score = 0;
+
+
+    function displayQuestion() {
+      var questionContainer = document.getElementById("question-container");
+      var question = questions[currentQuestion];
+      var questionText = questionContainer.getElementsByTagName("p")[0];
+      var choices = questionContainer.getElementsByTagName("input");
+      
+      questionText.textContent = question.question;
+      
+      for (var i = 0; i < choices.length; i++) {
+        choices[i].value = question.answers[i];
+        choices[i].checked = false;
+      }
+    }
+
+    function nextQuestion() {
+      var selectedAnswer = document.querySelector('input[name="answer"]:checked');
+      
+      if (selectedAnswer === null) {
+        alert("Wybierz odpowiedź!");
+        return;
+      }
+      
+      if (selectedAnswer.value === questions[currentQuestion].answers[questions[currentQuestion].correctAnswer]) {
+        score++;
+      }
+      
+      currentQuestion++;
+      
+      if (currentQuestion < questions.length) {
+        displayQuestion();
+      } else {
+        displayResult();
+      }
+    }
+    function previousQuestion() {
+        if (currentQuestion > 0) {
+            currentQuestion--;
+            displayQuestion();
+        } else {
+            alert("To jest pierwsze pytanie!");
+        }
+    }
+
+    function displayResult() {
+      var resultContainer = document.getElementById("result-container");
+      var resultText = document.getElementById("result");
+      var scorePercentage = (score / questions.length) * 100;
+      var passThreshold = 75;
+
+      resultText.textContent = score + " / " + questions.length + " (" + scorePercentage + "%)";
+
+      if (scorePercentage >= passThreshold) {
+        resultText.textContent += " - PASS";
+      } else {
+        resultText.textContent += " - FAIL";
+      }
+
+      document.getElementById("question-container").style.display = "none";
+      resultContainer.style.display = "block";
+    }
+
+    function showAnswers() {
+        var answersContainer = document.getElementById("answers-container");
+  
+        for (var i = 0; i < questions.length; i++) {
+            var question = questions[i];
+            var questionNumber = i + 1;
+            var userAnswer = "";
+
+            var selectedAnswer = document.querySelector('input[name="answer"]:checked');
+            if (selectedAnswer !== null) {
+            userAnswer = selectedAnswer.value;
+            }
+
+            var answerText = document.createElement("p");
+            answerText.textContent = "Pytanie " + questionNumber + ":";
+            answersContainer.appendChild(answerText);
+
+            var userAnswerText = document.createElement("p");
+            userAnswerText.textContent = "Odpowiedź użytkownika: " + userAnswer;
+            answersContainer.appendChild(userAnswerText);
+
+            var correctAnswerText = document.createElement("p");
+            correctAnswerText.textContent = "Poprawna odpowiedź: " + question.answers[question.correctAnswer];
+            answersContainer.appendChild(correctAnswerText);
+
+            var separator = document.createElement("hr");
+            answersContainer.appendChild(separator);
+        }
+
+        var resultContainer = document.getElementById("result-container");
+        resultContainer.appendChild(answersContainer);
+    }
+
+    function retryQuiz() {
+        currentQuestion = 0;
+        score = 0;
+        displayQuestion();
+        
+        var resultContainer = document.getElementById("result-container");
+        resultContainer.style.display = "none";
+        
+        var questionContainer = document.getElementById("question-container");
+        questionContainer.style.display = "block";
+        showStart();
+        hideContainers();
+    }
+
+    function downloadCertificate() {
+        // Creating new jsPDF object
+        const { jsPDF } = window.jspdf
+        var doc = new jsPDF();
+
+        // Adding text to certificate
+        doc.setFontSize(20);
+        doc.text('Certyfikat Quizu AFiBV', 10, 20);
+        doc.setFontSize(16);
+        doc.text('Wynik: ' + score + ' / ' + questions.length, 10, 40);
+        doc.setFontSize(12);
+
+        // Adding user answers
+        for (var i = 0; i < questions.length; i++) {
+            var question = questions[i];
+            var questionNumber = i + 1;
+            var userAnswer = "";
+
+            var selectedAnswer = document.querySelector('input[name="answer"]:checked');
+            if (selectedAnswer !== null) {
+            userAnswer = selectedAnswer.value;
+            }
+
+            doc.text('Pytanie ' + questionNumber + ':', 10, 60 + i * 40);
+            doc.text('Odpowiedź użytkownika: ' + userAnswer, 10, 75 + i * 40);
+            doc.text('Poprawna odpowiedź: ' + question.answers[question.correctAnswer], 10, 90 + i * 40);
+        }
+
+        // Generating PDF file
+        var certificateFile = doc.output();
+
+        // Creating link to download certificate 
+        var link = document.createElement('a');
+        link.href = 'data:application/pdf;base64,' + btoa(certificateFile);
+        link.download = 'certificate.pdf';
+
+        // Adding link to document and clicing it to start downloading
+        document.body.appendChild(link);
+        link.click();
+
+        // Deleting link from document
+        document.body.removeChild(link);
+    }
+    function startQuiz() {
+        var startBtn = document.querySelector('.start_btn');
+        var instructions = document.getElementById('instructions');
+        var questionContainer = document.getElementById('question-container');
+
+        startBtn.style.display = 'none';
+        instructions.style.display = 'none';
+        questionContainer.style.display = 'block';
+
+        displayQuestion();
+    }
+    function showStart(){
+        var startBtn = document.querySelector('.start_btn');
+        var instructions = document.getElementById('instructions');
+        var questionContainer = document.getElementById('question-container');
+
+        startBtn.style.display = 'block';
+        instructions.style.display = 'block';
+    }
+    function hideContainers() {
+        var questionContainer = document.getElementById('question-container');
+        var resultContainer = document.getElementById('result-container');
+
+        questionContainer.style.display = 'none';
+        resultContainer.style.display = 'none';
+    }
+    function showContainers() {
+        var questionContainer = document.getElementById('question-container');
+        var resultContainer = document.getElementById('result-container');
+
+        questionContainer.style.display = 'block';
+        resultContainer.style.display = 'block';
+    }
+
+    hideContainers();
+    document.querySelector('.start_btn button').addEventListener('click', startQuiz);
+  </script>
 </body>
 </html>

@@ -1,27 +1,108 @@
-.choice-container {
-    display: flex;
-    margin-bottom: 0.5rem;
-    width: 100%;
-    font-size: 1.8rem;
-    border: 0.1rem solid rgb(86, 165, 235, 0.25);
-    background-color: white;
-  }
-  
-  .choice-container:hover {
-    cursor: pointer;
-    box-shadow: 0 0.4rem 1.4rem 0 rgba(86, 185, 235, 0.5);
-    transform: translateY(-0.1rem);
-    transition: transform 150ms;
-  }
-  
-  .choice-letter {
-    padding: 1.5rem 2.5rem;
-    background-color: #56a5eb;
-    color: white;
-  }
-  
-  .choice-text {
-    padding: 1.5rem;
-    width: 100%;
-  }
-  
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+p {
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.question {
+  margin-bottom: 20px;
+}
+
+.choices {
+  margin-top: 10px;
+}
+
+.choices label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.choices input[type="radio"] {
+  margin-right: 10px;
+}
+
+.correct-answer {
+  background-color: #c3e6cb;
+}
+
+.wrong-answer {
+  background-color: #f8d7da;
+}
+
+.result-container {
+  display: none;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.result {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.link {
+  display: block;
+  text-align: right;
+  margin-top: 10px;
+}
+
+.link a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.link a:hover {
+  text-decoration: underline;
+}
+header{
+  float: right;
+}
+
+#answers-container {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+}
+
+#answers-container p {
+  margin-bottom: 10px;
+}

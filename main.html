@@ -2,26 +2,27 @@
 <html>
 <head>
     <title>Quiz AFiBV</title>
-    <link rel="stylesheet" href="stylebetter.css">
+    <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
 <header>
-    <img src="VistulaLogo.png"  alt="Logo AFiBV"></a>
+    <img src="VistulaLogo.png"  alt="Logo AFiBV" id="VistulaLogo"></a>
 </header>
 
-<!-- start Quiz button -->
-<div class="start_btn"><button>Start Quiz</button></div>
 
 <!-- quiz and instruction to refactor -->
 <div id="quiz-container">
-    <h1>Quiz AFiBV</h1>
-    <div id="instructions">
-        <p>Tutaj znajduje się instrukcja dotycząca quizu.</p>
-        <p>Opis funkcji, działania i przebieg quizu.</p>
-    </div>
-
+  <h1>Quiz AFiBV</h1>
+  <div id="instructions">
+    <p>Tutaj znajduje się instrukcja dotycząca quizu.</p>
+    <p>Opis funkcji, działania i przebieg quizu.</p>
+  </div>
+  
+  <!-- start Quiz button -->
+  <div class="start_btn"><button>Start Quiz</button></div>
+  
     <div id="question-container">
         <h2>Pytanie 1:</h2>
         <p>Treść pytania</p>
@@ -251,7 +252,6 @@
 
     hideContainers();
     document.querySelector('.start_btn button').addEventListener('click', startQuiz);
-
   </script>
 </body>
 </html>

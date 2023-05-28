@@ -38,9 +38,10 @@
       <h2>Wynik:</h2>
       <p id="result"></p>
       <div id="answers-container"></div>
-      <button onclick="showAnswers()">Pokaż prawidłowe odpowiedzi</button>
-      <button onclick="retryQuiz()">Rozpocznij ponownie</button>
-      <button onclick="downloadCertificate()">Pobierz certyfikat</button>
+      <button onclick="showAnswers()" id="answers_btn">Pokaż prawidłowe odpowiedzi</button>
+      <button onclick="retryQuiz()" id="retry_btn">Rozpocznij ponownie</button>
+      <button onclick="downloadCertificate()" id="downloadCert_btn">Pobierz certyfikat</button>
+
     </div>
   </div>
 
@@ -126,7 +127,8 @@
 
     function showAnswers() {
         var answersContainer = document.getElementById("answers-container");
-  
+        answersContainer.style.display = 'block';
+        answersContainer.innerHTML = ''; // Clear the existing content
         for (var i = 0; i < questions.length; i++) {
             var question = questions[i];
             var questionNumber = i + 1;
@@ -161,12 +163,6 @@
         currentQuestion = 0;
         score = 0;
         displayQuestion();
-        
-        var resultContainer = document.getElementById("result-container");
-        resultContainer.style.display = "none";
-        
-        var questionContainer = document.getElementById("question-container");
-        questionContainer.style.display = "block";
         showStart();
         hideContainers();
     }
@@ -236,9 +232,11 @@
     function hideContainers() {
         var questionContainer = document.getElementById('question-container');
         var resultContainer = document.getElementById('result-container');
+        var answerContainer = document.getElementById('answers-container');
 
         questionContainer.style.display = 'none';
         resultContainer.style.display = 'none';
+        answerContainer.style.display = 'none';
     }
     function showContainers() {
         var questionContainer = document.getElementById('question-container');

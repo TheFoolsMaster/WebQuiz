@@ -212,13 +212,16 @@
             choices[i].value = question.answers[i];
             choices[i].checked = false;
             choices[i].setAttribute("data-question", currentQuestion);
+            choices[i].nextSibling.textContent = question.answers[i];
         }
 
         var selectedAnswer = selectedAnswers[currentQuestion];
         if (selectedAnswer !== null) {
-            var selectedInput = questionContainer.querySelector('input[value="' + selectedAnswer + '"]');
+            var selectedInput = questionContainer.querySelector(
+            'input[value="' + selectedAnswer + '"]'
+            );
             if (selectedInput !== null) {
-                selectedInput.checked = true;
+            selectedInput.checked = true;
             }
         }
     }

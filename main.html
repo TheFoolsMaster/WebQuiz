@@ -16,9 +16,62 @@
 <div id="quiz-container">
   <h1>Quiz AFiBV</h1>
   <div id="instructions">
-    <p>Tutaj znajduje się instrukcja dotycząca quizu.</p>
-    <p>Opis funkcji, działania i przebieg quizu.</p>
+    <h1>Instuctions</h1>
+    <ol>
+      <li>Click the "Start Quiz" button to begin the quiz.</li>
+      <li>The first question will appear along with multiple-choice options. Read the question and the available options.</li>
+      <li>Select the radio button next to the answer you think is correct.</li>
+      <li>Click the Next button to proceed to the next question. If you want to go back to the previous question, click the Previous button.</li>
+      <li>Repeat steps 4 and 5 for each question until you have answered all the questions.</li>
+      <li>After answering all the questions, the quiz will automatically calculate your score and display the result.</li>
+      <li>The result will show the number of correct answers and the overall percentage score. It will also indicate whether you have passed or failed based on a pass threshold of 75%.</li>
+      <li>You can click the Show Correct Answers button to view the correct answers for all the questions.</li>
+      <li>If you want to retry the quiz, click the Retry button. This will reset the quiz and allow you to answer the questions again.</li>
+      <li>To download a certificate of completion, click the Download Certificate button. This will generate a PDF file containing your score and answers.</li>
+      <li>Save the downloaded certificate for your records.</li>
+      <li>You can close the web browser when you are finished with the quiz.</li>
+    </ol>
+    </div>
+    <div id="quiz-features-container">
+    <h1>Quiz Features:</h1>
+
+    <h3>Start Quiz:</h3>
+    <p>Clicking the "Start Quiz" button initiates the quiz.</p>
+
+    <h3>Question Display:</h3>
+    <p>The quiz displays one question at a time, along with multiple-choice options.</p>
+
+    <h3>Answer Selection:</h3>
+    <p>Users select the radio button next to the answer they believe is correct.</p>
+
+    <h3>Navigation:</h3>
+    <p>Users can navigate through the quiz by clicking the Next button to proceed to the next question. They can also click the Previous button to go back to the previous question.</p>
+
+    <h3>Answering All Questions:</h3>
+    <p>Users repeat steps 3 and 4 for each question until they have answered all the questions.</p>
+
+    <h3>Automatic Scoring:</h3>
+    <p>After answering all the questions, the quiz automatically calculates the user's score based on the number of correct answers.</p>
+
+    <h3>Result Display:</h3>
+    <p>The quiz displays the user's score as the number of correct answers and the overall percentage score. It also indicates whether the user has passed or failed based on a pass threshold of 75%.</p>
+
+    <h3>Show Correct Answers:</h3>
+    <p>Users can click the Show Correct Answers button to view the correct answers for all the questions.</p>
+
+    <h3>Retry Quiz:</h3>
+    <p>If users want to retry the quiz, they can click the Retry button. This resets the quiz, allowing users to answer the questions again.</p>
+
+    <h3>Certificate Download:</h3>
+    <p>To obtain a certificate of completion, users can click the Download Certificate button. This generates a PDF file containing the user's score and answers.</p>
+
+    <h3>Saving Certificate:</h3>
+    <p>Users are advised to save the downloaded certificate for their records.</p>
+
+    <h3>Quiz Completion:</h3>
+    <p>Users can close the web browser once they have finished the quiz. Overall, the quiz provides an interactive and dynamic experience where users can test their knowledge, receive immediate feedback, and obtain a completion certificate.</p>
   </div>
+
   
   <!-- start Quiz button -->
   <div class="start_btn"><button>Start Quiz</button></div>
@@ -30,17 +83,17 @@
         <input type="radio" name="answer" value="B"> Odpowiedź B<br>
         <input type="radio" name="answer" value="C"> Odpowiedź C<br>
         <input type="radio" name="answer" value="D"> Odpowiedź D<br>
-        <button onclick="nextQuestion()">Dalej</button>
-        <button onclick="previousQuestion()">Wstecz</button>
+        <button onclick="nextQuestion()">Next</button>
+        <button onclick="previousQuestion()">Previous</button>
     </div>
 
     <div id="result-container" style="display: none;">
         <h2>Wynik:</h2>
         <p id="result"></p>
         <div id="answers-container"></div>
-        <button onclick="showAnswers()" id="answers_btn">Pokaż prawidłowe odpowiedzi</button>
-        <button onclick="retryQuiz()" id="retry_btn">Rozpocznij ponownie</button>
-        <button onclick="downloadCertificate()" id="downloadCert_btn">Pobierz certyfikat</button>
+        <button onclick="showAnswers()" id="answers_btn">Show Correct Answers</button>
+        <button onclick="retryQuiz()" id="retry_btn">Retry</button>
+        <button onclick="downloadCertificate()" id="downloadCert_btn">Download Certificate</button>
     </div>
 </div>
 
@@ -56,7 +109,91 @@
             answers: ["Odpowiedź A", "Odpowiedź B", "Odpowiedź C", "Odpowiedź D"],
             correctAnswer: 1
         },
-        // Add rest questions
+        {
+            question: "What is the capital of France?",
+            answers: ["Paris", "London", "Rome", "Berlin"],
+            correctAnswer: 0
+        },
+        {
+            question: "Which planet is known as the Red Planet?",
+            answers: ["Venus", "Mars", "Jupiter", "Saturn"],
+            correctAnswer: 1
+        },
+        {
+            question: "Who painted the Mona Lisa?",
+            answers: ["Leonardo da Vinci", "Vincent van Gogh", "Pablo Picasso", "Michelangelo"],
+            correctAnswer: 0
+        },
+        {
+            question: "What is the largest organ in the human body?",
+            answers: ["Heart", "Brain", "Skin", "Liver"],
+            correctAnswer: 2
+        },
+        {
+            question: "Which country is famous for producing maple syrup?",
+            answers: ["United States", "Canada", "Mexico", "Brazil"],
+            correctAnswer: 1
+        },
+        {
+            question: "Which animal is known as the 'King of the Jungle'?",
+            answers: ["Elephant", "Lion", "Tiger", "Giraffe"],
+            correctAnswer: 1
+        },
+        {
+            question: "What is the chemical symbol for gold?",
+            answers: ["Go", "Au", "Gd", "Ag"],
+            correctAnswer: 1
+        },
+        {
+            question: "Who wrote the novel 'Pride and Prejudice'?",
+            answers: ["Jane Austen", "William Shakespeare", "Charles Dickens", "F. Scott Fitzgerald"],
+            correctAnswer: 0
+        },
+        {
+            question: "What is the tallest mountain in the world?",
+            answers: ["Mount Everest", "K2", "Kangchenjunga", "Makalu"],
+            correctAnswer: 0
+        },
+        {
+            question: "Which year did World War II end?",
+            answers: ["1943", "1944", "1945", "1946"],
+            correctAnswer: 2
+        },
+        {
+            question: "What is the chemical formula for water?",
+            answers: ["CO2", "H2O", "NaCl", "O2"],
+            correctAnswer: 1
+        },
+        {
+            question: "Who is the author of 'To Kill a Mockingbird'?",
+            answers: ["Harper Lee", "F. Scott Fitzgerald", "Mark Twain", "Ernest Hemingway"],
+            correctAnswer: 0
+        },
+        {
+            question: "Which country won the FIFA World Cup 2018?",
+            answers: ["Brazil", "Germany", "France", "Spain"],
+            correctAnswer: 2
+        },
+        {
+            question: "What is the largest ocean on Earth?",
+            answers: ["Indian Ocean", "Arctic Ocean", "Atlantic Ocean", "Pacific Ocean"],
+            correctAnswer: 3
+        },
+        {
+            question: "Who is the current CEO of Tesla?",
+            answers: ["Jeff Bezos", "Elon Musk", "Tim Cook", "Satya Nadella"],
+            correctAnswer: 1
+        },
+        {
+            question: "Which artist painted the famous artwork 'The Starry Night'?",
+            answers: ["Pablo Picasso", "Vincent van Gogh", "Leonardo da Vinci", "Salvador Dalí"],
+            correctAnswer: 1
+        },
+        {
+            question: "What is the currency of Japan?",
+            answers: ["Yuan", "Pound", "Euro", "Yen"],
+            correctAnswer: 3
+        },
     ];
 
     var currentQuestion = 0;
@@ -186,9 +323,9 @@
         var doc = new jsPDF();
 
         doc.setFontSize(20);
-        doc.text('Certyfikat Quizu AFiBV', 10, 20);
+        doc.text('AFiBV QUIZ CERTIFICATE', 10, 20);
         doc.setFontSize(16);
-        doc.text('Wynik: ' + score + ' / ' + questions.length, 10, 40);
+        doc.text('Score: ' + score + ' / ' + questions.length, 10, 40);
         doc.setFontSize(12);
 
         for (var i = 0; i < questions.length; i++) {
@@ -196,9 +333,9 @@
             var questionNumber = i + 1;
             var userAnswer = selectedAnswers[i] || "";
 
-            doc.text('Pytanie ' + questionNumber + ':', 10, 60 + i * 40);
-            doc.text('Odpowiedź użytkownika: ' + userAnswer, 10, 75 + i * 40);
-            doc.text('Poprawna odpowiedź: ' + question.answers[question.correctAnswer], 10, 90 + i * 40);
+            doc.text('Questions ' + questionNumber + ':', 10, 60 + i * 40);
+            doc.text('User answers: ' + userAnswer, 10, 75 + i * 40);
+            doc.text('Correct answers: ' + question.answers[question.correctAnswer], 10, 90 + i * 40);
         }
 
         var certificateFile = doc.output();
@@ -216,9 +353,11 @@
         var startBtn = document.querySelector('.start_btn');
         var instructions = document.getElementById('instructions');
         var questionContainer = document.getElementById('question-container');
+        var quizfeaturescontainer = document.getElementById('quiz-features-container');
 
         startBtn.style.display = 'none';
         instructions.style.display = 'none';
+        quizfeaturescontainer.style.display = 'none';
         questionContainer.style.display = 'block';
 
         displayQuestion();
@@ -227,7 +366,9 @@
     function showStart() {
         var startBtn = document.querySelector('.start_btn');
         var instructions = document.getElementById('instructions');
+        var quizfeaturescontainer = document.getElementById('quiz-features-container');
 
+        quizfeaturescontainer.style.display = 'block';
         startBtn.style.display = 'block';
         instructions.style.display = 'block';
     }
@@ -236,6 +377,7 @@
         var questionContainer = document.getElementById('question-container');
         var resultContainer = document.getElementById('result-container');
         var answerContainer = document.getElementById('answers-container');
+
 
         questionContainer.style.display = 'none';
         resultContainer.style.display = 'none';

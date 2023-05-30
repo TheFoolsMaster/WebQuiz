@@ -77,7 +77,7 @@
   <div class="start_btn"><button>Start Quiz</button></div>
   
     <div id="question-container">
-        <h2>Pytanie 1:</h2>
+        <h2 id="progress">Question:</h2>
         <p>Treść pytania</p>
         <input type="radio" name="answer" value="A"> Odpowiedź A<br>
         <input type="radio" name="answer" value="B"> Odpowiedź B<br>
@@ -100,13 +100,8 @@
 <script>
     var questions = [
         {
-            question: "Treść pytania 1",
-            answers: ["Odpowiedź A", "Odpowiedź B", "Odpowiedź C", "Odpowiedź D"],
-            correctAnswer: 0
-        },
-        {
-            question: "Treść pytania 2",
-            answers: ["Odpowiedź A", "Odpowiedź B", "Odpowiedź C", "Odpowiedź D"],
+            question: "Who wrote book called 1984",
+            answers: ["George  Orwell", "Stanley Parable", "Ray Bradbury", "Harper Lee"],
             correctAnswer: 1
         },
         {
@@ -194,6 +189,41 @@
             answers: ["Yuan", "Pound", "Euro", "Yen"],
             correctAnswer: 3
         },
+        {
+            question: "What is the capital of Australia?",
+            answers: ["Sydney", "Melbourne", "Canberra", "Brisbane"],
+            correctAnswer: 2
+        },
+        {
+            question: "Who wrote the play 'Hamlet'?",
+            answers: ["William Shakespeare", "Arthur Miller", "Anton Chekhov", "Tennessee Williams"],
+            correctAnswer: 0
+        },
+        {
+            question: "What is the largest planet in our solar system?",
+            answers: ["Earth", "Jupiter", "Saturn", "Neptune"],
+            correctAnswer: 1
+        },
+        {
+            question: "Which country is famous for the Great Wall?",
+            answers: ["China", "Japan", "India", "South Korea"],
+            correctAnswer: 0
+        },
+        {
+            question: "Who discovered the theory of relativity?",
+            answers: ["Isaac Newton", "Albert Einstein", "Galileo Galilei", "Nikola Tesla"],
+            correctAnswer: 1
+        },
+        {
+            question: "What is the chemical symbol for oxygen?",
+            answers: ["O", "H", "C", "N"],
+            correctAnswer: 0
+        },
+        {
+            question: "Which animal is known for its ability to mimic human speech?",
+            answers: ["Dolphin", "Elephant", "Parrot", "Monkey"],
+            correctAnswer: 2
+        }
     ];
 
     var currentQuestion = 0;
@@ -205,6 +235,7 @@
         var question = questions[currentQuestion];
         var questionText = questionContainer.getElementsByTagName("p")[0];
         var choices = questionContainer.getElementsByTagName("input");
+        var progress = document.getElementById("progress");
 
         questionText.textContent = question.question;
 
@@ -224,7 +255,10 @@
             selectedInput.checked = true;
             }
         }
+
+        progress.textContent = "Question " + (currentQuestion + 1) + " of " + questions.length;
     }
+
 
     function nextQuestion() {
         var selectedAnswer = document.querySelector('input[name="answer"]:checked');

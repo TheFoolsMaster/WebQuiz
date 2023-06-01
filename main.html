@@ -230,8 +230,14 @@
     var score = 0;
     var selectedAnswers = Array(questions.length).fill(null);
 
+    var startBtn = getQuerySelector('.start_btn');
+    var instructions = getElementById('instructions');
+    var quizfeaturescontainer = getElementById('quiz-features-container');
+    var questionContainer = getElementById('question-container');
+    var resultContainer = getElementById('result-container');
+    var answerContainer = getElementById('answers-container');
+
     function displayQuestion() {
-        var questionContainer = document.getElementById("question-container");
         var question = questions[currentQuestion];
         var questionText = questionContainer.getElementsByTagName("p")[0];
         var choices = questionContainer.getElementsByTagName("input");
@@ -298,7 +304,6 @@
     }
 
     function displayResult() {
-        var resultContainer = document.getElementById("result-container");
         var resultText = document.getElementById("result");
         var scorePercentage = (score / questions.length) * 100;
         var passThreshold = 75;
@@ -386,49 +391,52 @@
         document.body.removeChild(link);
     }
 
-    function startQuiz() {
-        var startBtn = document.querySelector('.start_btn');
-        var instructions = document.getElementById('instructions');
-        var questionContainer = document.getElementById('question-container');
-        var quizfeaturescontainer = document.getElementById('quiz-features-container');
+    function getElementById(id) {
+  return document.getElementById(id);
+}
 
-        startBtn.style.display = 'none';
-        instructions.style.display = 'none';
-        quizfeaturescontainer.style.display = 'none';
-        questionContainer.style.display = 'block';
+function getQuerySelector(selector) {
+  return document.querySelector(selector);
+}
 
-        displayQuestion();
-    }
+function hideElement(element) {
+  element.style.display = 'none';
+}
 
-    function showStart() {
-        var startBtn = document.querySelector('.start_btn');
-        var instructions = document.getElementById('instructions');
-        var quizfeaturescontainer = document.getElementById('quiz-features-container');
+function showElement(element) {
+  element.style.display = 'block';
+}
 
-        quizfeaturescontainer.style.display = 'block';
-        startBtn.style.display = 'block';
-        instructions.style.display = 'block';
-    }
+function startQuiz() {
 
-    function hideContainers() {
-        var questionContainer = document.getElementById('question-container');
-        var resultContainer = document.getElementById('result-container');
-        var answerContainer = document.getElementById('answers-container');
+  hideElement(startBtn);
+  hideElement(instructions);
+  hideElement(quizfeaturescontainer);
+  showElement(questionContainer);
+
+  displayQuestion();
+}
+
+function showStart() {
+
+  showElement(quizfeaturescontainer);
+  showElement(startBtn);
+  showElement(instructions);
+}
+
+function hideContainers() {
+
+  hideElement(questionContainer);
+  hideElement(resultContainer);
+  hideElement(answerContainer);
+}
 
 
-        questionContainer.style.display = 'none';
-        resultContainer.style.display = 'none';
-        answerContainer.style.display = 'none';
-    }
+function showContainers() {
 
-    function showContainers() {
-        var questionContainer = document.getElementById('question-container');
-        var resultContainer = document.getElementById('result-container');
-
-        questionContainer.style.display = 'block';
-        resultContainer.style.display = 'block';
-    }
-
+  showElement(questionContainer);
+  showElement(resultContainer);
+}
     hideContainers();
     document.querySelector('.start_btn button').addEventListener('click', startQuiz);
   </script>

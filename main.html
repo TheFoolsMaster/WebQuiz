@@ -370,9 +370,9 @@
             var questionNumber = i + 1;
             var userAnswer = selectedAnswers[i] || "";
 
-            doc.text('Questions ' + questionNumber + ':', 10, 60 + i * 40);
-            doc.text('User answers: ' + userAnswer, 10, 75 + i * 40);
-            doc.text('Correct answers: ' + question.answers[question.correctAnswer], 10, 90 + i * 40);
+            doc.text('Questions ' + questionNumber + ':', 10, 50 + i * 40);
+            doc.text('User answers: ' + userAnswer, 10, 60 + i * 40);
+            doc.text('Correct answers: ' + question.answers[question.correctAnswer], 10, 70 + i * 40);
         }
 
         var certificateFile = doc.output();

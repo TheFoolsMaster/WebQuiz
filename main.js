@@ -30,8 +30,8 @@ var questions = [
         correctAnswer: 1
     },
     {
-        question: "Which animal is known as the 'King of the Jungle'?",
-        answers: ["Elephant", "Lion", "Tiger", "Giraffe"],
+        question: "Who wrote the epic poem 'Pan Tadeusz'?",
+        answers: ["Andrzej Sapkowski", "Adam Mickiewicz", "Ignacy Krasicki", "Aleksander Fredro"],
         correctAnswer: 1
     },
     {
@@ -170,7 +170,7 @@ function nextQuestion() {
     var selectedAnswer = document.querySelector('input[name="answer"]:checked');
 
     if (selectedAnswer === null) {
-        alert("Wybierz odpowiedź!");
+        alert("Choose an answer!");
         return;
     }
 
@@ -190,7 +190,7 @@ function previousQuestion() {
         currentQuestion--;
         displayQuestion();
     } else {
-        alert("To jest pierwsze pytanie!");
+        alert("It is first question!");
     }
 }
 

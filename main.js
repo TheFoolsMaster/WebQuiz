@@ -5,13 +5,13 @@ var questions = [
         correctAnswer: 1
     },
     {
-        question: "What is the capital of France?",
-        answers: ["Paris", "London", "Rome", "Berlin"],
+        question: "Demolition of the Berlin wall separating East and West Germany began in what year?",
+        answers: ["1989", "1990", "1968", "1877"],
         correctAnswer: 0
     },
     {
-        question: "Which planet is known as the Red Planet?",
-        answers: ["Venus", "Mars", "Jupiter", "Saturn"],
+        question: "How long is an Olympic swimming pool (in meters)?",
+        answers: ["200m", "50m", "100m", "25m"],
         correctAnswer: 1
     },
     {
@@ -20,8 +20,8 @@ var questions = [
         correctAnswer: 0
     },
     {
-        question: "What is the largest organ in the human body?",
-        answers: ["Heart", "Brain", "Skin", "Liver"],
+        question: "What countries made up the original Axis powers in World War II?",
+        answers: ["Poland, Latvia, Estonia, Romania", "USA, UK, France, USSR", "Germany, Italy, and Japan", "China, Malaysia, Australia"],
         correctAnswer: 2
     },
     {
@@ -40,8 +40,8 @@ var questions = [
         correctAnswer: 1
     },
     {
-        question: "Who wrote the novel 'Pride and Prejudice'?",
-        answers: ["Jane Austen", "William Shakespeare", "Charles Dickens", "F. Scott Fitzgerald"],
+        question: "Who named the Pacific Ocean?",
+        answers: ["Ferdinand Magellan", "William Shakespeare", "Charles Darwin", "F. Scott Fitzgerald"],
         correctAnswer: 0
     },
     {
@@ -50,8 +50,8 @@ var questions = [
         correctAnswer: 0
     },
     {
-        question: "Which year did World War II end?",
-        answers: ["1943", "1944", "1945", "1946"],
+        question: "What is the name of the biggest technology company in South Korea?",
+        answers: ["Kia Motors", "Hyundai Motor", "Samsung Electronics", "LG Electronics"],
         correctAnswer: 2
     },
     {
@@ -60,13 +60,13 @@ var questions = [
         correctAnswer: 1
     },
     {
-        question: "Who is the author of 'To Kill a Mockingbird'?",
-        answers: ["Harper Lee", "F. Scott Fitzgerald", "Mark Twain", "Ernest Hemingway"],
+        question: "Who was the first woman to win a Nobel Prize (in 1903)?",
+        answers: ["Marie Curie", "Alice Ball", "Ada Lovelace", "Helen Taussig"],
         correctAnswer: 0
     },
     {
-        question: "Which country won the FIFA World Cup 2018?",
-        answers: ["Brazil", "Germany", "France", "Spain"],
+        question: "Who was the first woman pilot to fly solo across the Atlantic?",
+        answers: ["Harriet Quimby", "Tom Cruise", "Amelia Earhart", "Eileen Collins"],
         correctAnswer: 2
     },
     {

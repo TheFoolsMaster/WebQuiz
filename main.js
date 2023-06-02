@@ -21,7 +21,7 @@ var questions = [
     },
     {
         question: "What countries made up the original Axis powers in World War II?",
-        answers: ["Poland, Latvia, Estonia, Romania", "USA, UK, France, USSR", "Germany, Italy, and Japan", "China, Malaysia, Australia"],
+        answers: ["Poland, Latvia, Estonia, Romania", "USA, UK, France, USSR", "Germany, Italy, Japan", "China, Malaysia, Australia"],
         correctAnswer: 2
     },
     {
@@ -75,7 +75,7 @@ var questions = [
         correctAnswer: 3
     },
     {
-        question: "Who is the current CEO of Tesla?",
+        question: "Who is the current CEO of Tesla? (in 2023)",
         answers: ["Jeff Bezos", "Elon Musk", "Tim Cook", "Satya Nadella"],
         correctAnswer: 1
     },
